@@ -14,4 +14,4 @@ Additionally, we have some useful resources for you:
 - In `cheatsheets`, you'll find handy quick guides.
 - Explore the `sample dbs` folder for sample databases.
 
-Feel free to dive in, and enjoy your learning journey! If you have any questions, [don't hesitate to reach out](mojtaba.banaie@gmail.com).
+Feel free to dive in, and enjoy your learning journey! If you have any questions, don't hesitate to reach out : `mojtaba.banaie@gmail.com`
