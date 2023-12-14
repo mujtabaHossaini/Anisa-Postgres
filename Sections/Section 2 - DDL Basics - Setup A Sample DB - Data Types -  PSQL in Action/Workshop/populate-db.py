@@ -7,7 +7,7 @@ import psycopg
 fake = Faker()
 
 # Database connection parameters
-conn_params = "dbname=your_dbname user=your_username password=your_password"
+conn_params = "dbname=postgres user=postgres password=postgres123"
 
 # Function to insert fake data into the database
 def populate_db():
@@ -15,8 +15,8 @@ def populate_db():
         with conn.cursor() as cur:
             
             # Insert users
-            for _ in range(100):
-                username = fake.user_name()
+            for i in range(100):
+                username = f"{fake.user_name()}_{i}"
                 password = fake.password()
                 email = fake.email()
                 user_type = random.choice(['job_seeker', 'employer'])
@@ -24,6 +24,7 @@ def populate_db():
                     "INSERT INTO users (username, password, email, user_type) VALUES (%s, %s, %s, %s)",
                     (username, password, email, user_type)
                 )
+
 
             # Insert job_seekers and employers based on user_type
             cur.execute("SELECT user_id, user_type FROM users")
