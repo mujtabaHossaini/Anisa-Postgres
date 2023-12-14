@@ -195,7 +195,7 @@ Please note that this is not an exhaustive list, and PostgreSQL has many more sy
     CREATE TABLE job_seekers (
         seeker_id INT PRIMARY KEY REFERENCES users(user_id),
         resume JSON NOT NULL,
-        additional_info HSTORE,
+       --	additional_info JSONB,
         FOREIGN KEY (seeker_id) REFERENCES users(user_id)
     );
     ```
@@ -203,8 +203,10 @@ Please note that this is not an exhaustive list, and PostgreSQL has many more sy
 6. **Insert Data into Job Seekers Table:**
 
     ```sql
-    INSERT INTO job_seekers (seeker_id, resume, additional_info) VALUES
-        (1, '{"education": "B.Sc in Computer Science", "experience": "3 years"}', 'NULL');
+    INSERT INTO job_seekers (seeker_id, resume ) VALUES
+        (1, '{"education": "B.Sc in Computer Science", "experience": "3 years"}');
+        
+        Note : check that the user_id exist in the user table . 
     ```
 
 7. **Check Data in Job Seekers Table:**
@@ -219,7 +221,7 @@ Please note that this is not an exhaustive list, and PostgreSQL has many more sy
     CREATE TABLE employers (
         employer_id INT PRIMARY KEY REFERENCES users(user_id),
         company_name VARCHAR(100),
-        company_info HSTORE,
+        company_info JSONB,
         FOREIGN KEY (employer_id) REFERENCES users(user_id)
     );
     ```
