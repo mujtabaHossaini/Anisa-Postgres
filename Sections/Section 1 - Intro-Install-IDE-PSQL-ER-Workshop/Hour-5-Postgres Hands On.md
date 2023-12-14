@@ -90,35 +90,41 @@ Adjusting the schema to include JSON data types and separating the job seeker an
 ### Job-Seeking Online App
 
 ```sql
+-- Define custom ENUM for user_type
+CREATE TYPE user_role AS ENUM ('job_seeker', 'employer');
+
+-- Create a sequence for generating custom IDs
+CREATE SEQUENCE custom_id_seq;
+
 -- Users Table (Common for both job seekers and employers)
 CREATE TABLE users (
-    user_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id INT DEFAULT nextval('custom_id_seq') PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    password TEXT NOT NULL,  -- Use a more secure data type for passwords
     email VARCHAR(100) UNIQUE NOT NULL,
-    user_type VARCHAR(20) CHECK (user_type IN ('job_seeker', 'employer')) NOT NULL,
+    user_type user_role NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Job Seekers Table
 CREATE TABLE job_seekers (
-    seeker_id INT REFERENCES users(user_id),
-    resume JSON NOT NULL,  -- Storing resume in JSON format
-    additional_info JSON,  -- Additional information in JSON format
-    PRIMARY KEY (seeker_id)
+    seeker_id INT PRIMARY KEY REFERENCES users(user_id),
+    resume JSON NOT NULL,
+    additional_info HSTORE,  -- Storing additional information in HStore
+    FOREIGN KEY (seeker_id) REFERENCES users(user_id)
 );
 
 -- Employers Table
 CREATE TABLE employers (
-    employer_id INT REFERENCES users(user_id),
+    employer_id INT PRIMARY KEY REFERENCES users(user_id),
     company_name VARCHAR(100),
-    company_info JSON,  -- Company information in JSON format
-    PRIMARY KEY (employer_id)
+    company_info HSTORE,  -- Storing company information in HStore
+    FOREIGN KEY (employer_id) REFERENCES users(user_id)
 );
 
 -- Job Listings Table
 CREATE TABLE job_listings (
-    job_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    job_id INT DEFAULT nextval('custom_id_seq') PRIMARY KEY,
     employer_id INT REFERENCES employers(employer_id),
     title VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
@@ -129,7 +135,7 @@ CREATE TABLE job_listings (
 
 -- Applications Table
 CREATE TABLE applications (
-    application_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    application_id INT DEFAULT nextval('custom_id_seq') PRIMARY KEY,
     job_id INT REFERENCES job_listings(job_id),
     seeker_id INT REFERENCES job_seekers(seeker_id),
     application_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -138,10 +144,6 @@ CREATE TABLE applications (
 
 -- Creating an index for faster searches on job listings
 CREATE INDEX idx_job_listings ON job_listings(title, location);
-
-
-
-
 
 ```
 
