@@ -15,11 +15,9 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
-
 ---
 --- drop tables
 ---
-
 
 DROP TABLE IF EXISTS customer_customer_demo;
 DROP TABLE IF EXISTS customer_demographics;
@@ -239,7 +237,7 @@ CREATE TABLE us_states (
     state_id smallint NOT NULL,
     state_name character varying(100),
     state_abbr character varying(2),
-    state_region character varying(50)
+    region character varying(50)
 );
 
 
@@ -250,7 +248,7 @@ CREATE TABLE us_states (
 INSERT INTO categories VALUES (1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '\x');
 INSERT INTO categories VALUES (2, 'Condiments', 'Sweet and savory sauces, relishes, spreads, and seasonings', '\x');
 INSERT INTO categories VALUES (3, 'Confections', 'Desserts, candies, and sweet breads', '\x');
-INSERT INTO categories VALUES (4, 'Dairy Products', 'Cheeses', '\x');
+INSERT INTO categories VALUES (4, 'Dairy products', 'Cheeses', '\x');
 INSERT INTO categories VALUES (5, 'Grains/Cereals', 'Breads, crackers, pasta, and cereal', '\x');
 INSERT INTO categories VALUES (6, 'Meat/Poultry', 'Prepared meats', '\x');
 INSERT INTO categories VALUES (7, 'Produce', 'Dried fruit and bean curd', '\x');
@@ -3533,7 +3531,7 @@ INSERT INTO region VALUES (4, 'Southern');
 INSERT INTO shippers VALUES (1, 'Speedy Express', '(503) 555-9831');
 INSERT INTO shippers VALUES (2, 'United Package', '(503) 555-3199');
 INSERT INTO shippers VALUES (3, 'Federal Shipping', '(503) 555-9931');
-INSERT INTO shippers VALUES (4, 'Alliance Shippers', '1-800-222-0451');
+INSERT INTO shippers VALUES (4, 'Alliance shippers', '1-800-222-0451');
 INSERT INTO shippers VALUES (5, 'UPS', '1-800-782-7892');
 INSERT INTO shippers VALUES (6, 'DHL', '1-800-225-5345');
 
@@ -3558,7 +3556,7 @@ INSERT INTO suppliers VALUES (12, 'Plutzer Lebensmittelgroßmärkte AG', 'Martin
 INSERT INTO suppliers VALUES (13, 'Nord-Ost-Fisch Handelsgesellschaft mbH', 'Sven Petersen', 'Coordinator Foreign Markets', 'Frahmredder 112a', 'Cuxhaven', NULL, '27478', 'Germany', '(04721) 8713', '(04721) 8714', NULL);
 INSERT INTO suppliers VALUES (14, 'Formaggi Fortini s.r.l.', 'Elio Rossi', 'Sales Representative', 'Viale Dante, 75', 'Ravenna', NULL, '48100', 'Italy', '(0544) 60323', '(0544) 60603', '#FORMAGGI.HTM#');
 INSERT INTO suppliers VALUES (15, 'Norske Meierier', 'Beate Vileid', 'Marketing Manager', 'Hatlevegen 5', 'Sandvika', NULL, '1320', 'Norway', '(0)2-953010', NULL, NULL);
-INSERT INTO suppliers VALUES (16, 'Bigfoot Breweries', 'Cheryl Saylor', 'Regional Account Rep.', '3400 - 8th Avenue Suite 210', 'Bend', 'OR', '97101', 'USA', '(503) 555-9931', NULL, NULL);
+INSERT INTO suppliers VALUES (16, 'Bigfoot Breweries', 'Cheryl Saylor', 'regional Account Rep.', '3400 - 8th Avenue Suite 210', 'Bend', 'OR', '97101', 'USA', '(503) 555-9931', NULL, NULL);
 INSERT INTO suppliers VALUES (17, 'Svensk Sjöföda AB', 'Michael Björn', 'Sales Representative', 'Brovallavägen 231', 'Stockholm', NULL, 'S-123 45', 'Sweden', '08-123 45 67', NULL, NULL);
 INSERT INTO suppliers VALUES (18, 'Aux joyeux ecclésiastiques', 'Guylène Nodier', 'Sales Manager', '203, Rue des Francs-Bourgeois', 'Paris', NULL, '75004', 'France', '(1) 03.83.00.68', '(1) 03.83.00.62', NULL);
 INSERT INTO suppliers VALUES (19, 'New England Seafood Cannery', 'Robb Merchant', 'Wholesale Account Agent', 'Order Processing Dept. 2100 Paul Revere Blvd.', 'Boston', 'MA', '02134', 'USA', '(617) 555-3267', '(617) 555-3389', NULL);
