@@ -69,6 +69,7 @@
    ```
    
 2. **Display customers from the "Customers" table located in either France, Germany, or Spain:**
+   
    ```sql
    SELECT * FROM customers WHERE country IN ('France', 'Germany', 'Spain');
    ```
@@ -158,6 +159,7 @@ The `ORDER BY` clause in SQL is used to sort the result set of a query. You can 
 ### Sorting by Multiple Fields:
 
 3. **Sort orders from the "orders" table by customer ID in ascending order and then by order date in descending order:**
+   
    ```sql
    SELECT * FROM orders 
    ORDER BY ?
@@ -421,7 +423,21 @@ These examples demonstrate the use of common aggregate functions in SQL. Remembe
    - Calculate the average unit price for each category, considering only products with more than 10 units in stock.
 
    ```sql
-   ?
+   select 
+      count(
+   	case when ship_country = 'USA' then 1 end
+   	) as "USA",
+   	 count(
+   	case when ship_country = 'Canada' then 1 end
+   	) as "Canada",
+   	 count(
+   	case when ship_country = 'France' then 1 end
+   	) as "France",
+   	 count(
+   	case when ship_country = 'Germany' then 1 end
+   	) as "Germany"
+   from orders o
+   ;
    ```
 
 8. I need to count the orders of (France,USA, Canada, Germany), the out put has this structure :

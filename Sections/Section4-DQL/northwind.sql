@@ -15,12 +15,6 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
-drop database northwind;
-create database northwind;
----
---- drop tables
----
-use database northwind;
 
 DROP TABLE IF EXISTS customer_customer_demo;
 DROP TABLE IF EXISTS customer_demographics;

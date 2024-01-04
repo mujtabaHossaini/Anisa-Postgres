@@ -11,6 +11,8 @@ some basic select usage
    or
    select 'ALI' ; 
    
+   select 'Ali' as "ALI" ;
+   
    select 'ALi' as name, 28 as age;
    
    ```
@@ -185,7 +187,11 @@ Here are 10 more advanced examples of using the `SELECT` statement without the `
     
 13. **Case Statement:**
     ```sql
-    SELECT CASE WHEN 1 = 1 THEN 'True' ELSE 'False' END;
+    SELECT 
+    	  CASE 
+    		WHEN 1 = 1 THEN 'True' 
+    	    ELSE 'False' 
+    	  END;
     
     ?: Valid ?
     SELECT 'ALI ' || CASE WHEN 1 = 1 THEN 'True' ELSE 'False' END as "Test";
@@ -587,12 +593,14 @@ The `CASE WHEN` statement in PostgreSQL is often used for conditional logic with
    Returns 'Replacement Value' if the first expression is NULL; otherwise, returns the first expression.
 
 2. **Use `NULLIF` to Return NULL if Values Match:**
+   
    ```sql
    SELECT NULLIF('Hello', 'Hello');
    ```
    Returns NULL if the two expressions are equal; otherwise, returns the first expression.
-
+   
 3. **Use `CASE WHEN` to Handle NULL:**
+   
    ```sql
    SELECT
      CASE 
@@ -601,7 +609,7 @@ The `CASE WHEN` statement in PostgreSQL is often used for conditional logic with
      END;
    ```
    Checks if a specific expression is NULL and provides a result based on the condition.
-
+   
 4. **Numeric Calculation with NULL Handling:**
    
    ```sql
@@ -720,11 +728,12 @@ Certainly! PostgreSQL provides a variety of string manipulation functions that y
     Splits a string into an array using a delimiter.
 
 12. **Join Array into String:**
+    
     ```sql
     SELECT array_to_string(ARRAY['apple', 'orange', 'banana'], ',');
     ```
     Joins elements of an array into a string using a delimiter.
-
+    
 13. **Extract Word from String:**
     ```sql
     SELECT regexp_split_to_table('Hello, World!', '\s+') AS word;
