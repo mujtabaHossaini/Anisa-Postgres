@@ -192,7 +192,7 @@ GROUP BY
 
 Now, the result will include the campaign names:
 
-```
+```bash
 +--------------+--------------+
 | campaign_name| total_orders |
 +--------------+--------------+

@@ -207,9 +207,23 @@ SELECT * FROM expensive_films;
 Find customers with more than the average number of rentals and display the customer ID along with the total number of rentals.
 
 ```sql
+with customer_rental as 
+(
 SELECT customer_id, COUNT(*) AS total_rentals
 FROM rental
 GROUP BY customer_id
-HAVING COUNT(*) > (SELECT AVG(COUNT(*)) FROM rental GROUP BY customer_id);
+), customer_rental_avg as 
+(
+select 
+	avg(total_rentals) as rental_avg
+from
+	customer_rental
+)
+select * 
+from customer_rental
+where 
+total_rentals > (select rental_avg from  customer_rental_avg)
+
+
 ```
 
