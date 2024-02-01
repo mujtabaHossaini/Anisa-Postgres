@@ -11,74 +11,75 @@ Replace `your_username` and `your_database` with your actual PostgreSQL username
 ### 2. Create a new role:
 
 ```sql
-CREATE ROLE salesperson LOGIN PASSWORD 'salespassword';
+CREATE ROLE sales_person LOGIN PASSWORD 'salespassword';
 ```
 
-This creates a new role named "salesperson" with the ability to log in and assigns the password "salespassword" to the role.
+This creates a new role named "sales_person" with the ability to log in and assigns the password "salespassword" to the role.
 
 ### 3. Create a new user:
 
 ```sql
-CREATE USER sales_user WITH PASSWORD 'salesuserpassword';
+CREATE USER sales_user_test WITH PASSWORD 'salesuserpassword';
+ALTER USER sales_user_test SET ROLE sales_person;
 ```
 
-This creates a new user named "sales_user" with the specified password.
+This creates a new user named "sales_user_test" with the specified password.
 
 ### 4. Grant privileges on Northwind tables:
 
 ```sql
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO salesperson;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO sales_person;
 ```
 
-This grants the salesperson role the ability to perform SELECT, INSERT, UPDATE, and DELETE operations on all tables in the public schema.
+This grants the sales_person role the ability to perform SELECT, INSERT, UPDATE, and DELETE operations on all tables in the public schema.
 
 ### 5. Grant privileges on Northwind sequences:
 
 ```sql
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO salesperson;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO sales_person;
 ```
 
-This grants the salesperson role the ability to use and select values from all sequences in the public schema.
+This grants the sales_person role the ability to use and select values from all sequences in the public schema.
 
 ### 6. Grant privileges on specific table:
 
 ```sql
-GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE customers TO salesperson;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE customers TO sales_person;
 ```
 
-This grants the salesperson role specific privileges on the "customers" table.
+This grants the sales_person role specific privileges on the "customers" table.
 
 ### 7. Grant privileges on specific columns:
 
 ```sql
-GRANT SELECT (customerid, companyname) ON TABLE customers TO salesperson;
+GRANT SELECT (customer_id, company_name) ON TABLE customers TO sales_person;
 ```
 
-This grants the salesperson role the ability to select only specific columns from the "customers" table.
+This grants the sales_person role the ability to select only specific columns from the "customers" table.
 
 ### 8. Grant EXECUTE privilege on functions:
 
 ```sql
-GRANT EXECUTE ON FUNCTION calculate_order_total(integer) TO salesperson;
+GRANT EXECUTE ON FUNCTION calculate_order_total(integer) TO sales_person;
 ```
 
-This grants the salesperson role the ability to execute the specified function.
+This grants the sales_person role the ability to execute the specified function.
 
 ### 9. Revoke privileges:
 
 ```sql
-REVOKE INSERT, UPDATE ON TABLE products FROM salesperson;
+REVOKE INSERT, UPDATE ON TABLE products FROM sales_person;
 ```
 
-This revokes the salesperson role's ability to insert and update rows in the "products" table.
+This revokes the sales_person role's ability to insert and update rows in the "products" table.
 
 ### 10. Revoke all privileges:
 
 ```sql
-REVOKE ALL PRIVILEGES ON TABLE orders FROM salesperson;
+REVOKE ALL PRIVILEGES ON TABLE orders FROM sales_person;
 ```
 
-This revokes all privileges on the "orders" table from the salesperson role.
+This revokes all privileges on the "orders" table from the sales_person role.
 
 These examples cover a range of scenarios from basic to more advanced. Adjust them based on your specific use case and security requirements.
 

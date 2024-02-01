@@ -46,7 +46,7 @@
   
   -- Query the materialized view for aggregate reports
   SELECT * FROM job_seeker_application_count;
-  SELECT * FROM eeker_application_count_view;
+  SELECT * FROM job_seeker_application_count_view;
   
   ```
 

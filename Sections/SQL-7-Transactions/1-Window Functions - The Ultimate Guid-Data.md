@@ -71,7 +71,23 @@ SELECT DISTINCT session_type,
        avg(session_end -session_start) OVER (PARTITION BY session_type)
        AS duration
 FROM twitch_sessions
+
 ```
+
+##### Filter
+
+```sql
+SELECT
+    session_type,
+    AVG(session_end - session_start) FILTER (WHERE EXTRACT(MONTH FROM session_start) = 10) AS duration_10,
+    AVG(session_end - session_start) FILTER (WHERE EXTRACT(MONTH FROM session_start) = 11) AS duration_11
+FROM
+    twitch_sessions
+GROUP BY
+    session_type;
+```
+
+
 
 ### Employee Salary
 
