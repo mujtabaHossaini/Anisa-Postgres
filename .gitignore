@@ -3,4 +3,4 @@ Downloads/
 db_data/
 pgadmin_data/
 .venv/
-
+**/*.pdf
