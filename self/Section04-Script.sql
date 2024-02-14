@@ -44,6 +44,6 @@ SELECT 'PI :' || pi()  ; -- PI :3.141592653589793
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-SELECT uuid_generate_v4();
+SELECT uuid_generate_v4(), uuid_generate_v1();
 
 

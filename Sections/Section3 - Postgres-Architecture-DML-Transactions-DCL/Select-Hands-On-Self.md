@@ -102,8 +102,7 @@ some basic select usage
    ```sql
    SELECT sin(pi() / 2);
    
-   ?: Valid?
-   SELECT 'PI :' || pi()  ;
+   SELECT 'PI :' || pi()  ; -- PI :3.141592653589793
    ```
    Calculates the sine of π/2, which is 1.
 
@@ -111,7 +110,7 @@ some basic select usage
    ```sql
    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
    
-   SELECT uuid_generate_v4();
+   SELECT uuid_generate_v4(), uuid_generate_v1();
    ```
    Generates a version 4 UUID.
 
