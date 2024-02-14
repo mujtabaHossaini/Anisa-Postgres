@@ -24,35 +24,35 @@ some basic select usage
    ```sql
    SELECT 'Hello' || ' ' || 'World';
    
-   ?: 
+   
    SELECT 'Hello' || ' ' || 'World' as "Message";
    
-   or 
+    
    
-   SELECT 'Hello' || ' ' || 'World' as 'Message';
+   SELECT 'Hello' || ' ' || 'World' as 'Message'; -- syntax error, "" is used for column names
    
-   ?: Another Way ?
+   select concat('Hello', ' ', 'World!') as "Message"; 
    
    
-   ?: Is it Correct?
-   SELECT 'Hello' + ' ' + 'World' as "Message";
+   SELECT 'Hello' + ' ' + 'World' as "Message"; -- error
    
    ```
    This query concatenates the strings 'Hello', a space, and 'World', resulting in the output 'Hello World'.
 
 3. **Mathematical Expression:**
    ```sql
-   SELECT 5 * 3;
+   SELECT 5 * 3; -- 15
    
-   ?: output?
-   SELECT '90' *3;
+   SELECT '90' *3; -- 270
+   
+   SELECT '90'::int *3 as "Cast Operation";
    ```
    This query performs a simple multiplication operation and returns the result, which is 15.
 
 4. **Current Date:**
 
    ```sql
-   SELECT current_date;
+   SELECT current_date, current_time , current_timestamp ; -- YYYY-MM-DD
    ```
    Returns the current date.
 
@@ -60,24 +60,23 @@ some basic select usage
    ```sql
    SELECT current_time;
    
-   
-   ?: Which one is correct ?
-   
-   SELECT current_timestamp - current_time;
-   SELECT current_timestamp - current_date;
+   SELECT current_timestamp - current_time; -- error
+   SELECT current_timestamp - current_date; -- current_date is cast to current_timestamp with time 0
+   select current_date::timestamp; -- 2024-02-14 00:00:00.000
    
    ```
    Returns the current time.
 
 6. **String Length:**
    ```sql
-   SELECT length('Database');
+   SELECT length('Database'); -- 8
    ```
    Computes the length of the string 'Database' and returns the result.
 
 7. **Random Number:**
    ```sql
-   SELECT random();
+   SELECT random(); -- random between 0 and 1
+   select round(random() * 100); -- random between 0 and 100
    ```
    Generates a random value between 0 and 1.
 
