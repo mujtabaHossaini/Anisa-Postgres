@@ -20,10 +20,10 @@
   ```bash
   pg_dump -U postgres -d northwind > northwind.bak
   
-  pg_dump -U postgres -d northwind -F p -f northwind.sql
-  pg_dump -U postgres -d northwind -F c -f northwind.custom
+  pg_dump -U postgres -d northwind -Fp -f northwind.sql
+  pg_dump -U postgres -d northwind -Fc -f northwind.custom
   
-  pg_dump -U postgres -d northwind -F d -f northwind
+  pg_dump -U postgres -d northwind -Fd -f northwind
   
   pg_dump -U postgres -d northwind --table orders -F c -f northwind_orders_table.custom
   

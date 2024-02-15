@@ -19,7 +19,7 @@ default_args = {
 }
 
 dag = DAG(
-    'PG_Daily_Backups',
+    'PG_Test',
     default_args=default_args,
     description='An Daily Dag for Clean Up Docker Tem Files',
     schedule_interval=timedelta(days=1),
@@ -28,23 +28,13 @@ dag = DAG(
     
 )
 
-pg_daily_schema_backup= BashOperator(
-    task_id='pg_daily_schema_backup',
-    bash_command="/scripts/daily_schema_backup_script.sh  >> /backups/backup_log.log 2>&1",
-    dag=dag
-)
 
 
-pg_daily_northwind_backup= BashOperator(
-    task_id='pg_daily_northwind_backup',
-    bash_command="/scripts/daily_northwind_backup_script.sh  >> /backups/northwind_backup_log.log 2>&1",
-    dag=dag
-)
 
 
-t1 = EmptyOperator(task_id="empty_task1")
-t2 = EmptyOperator(task_id="empty_task2")
+t1 = EmptyOperator(task_id="test_empty_task1", dag=dag)
+t2 = EmptyOperator(task_id="test_empty_task2", dag=dag)
 
 
-t1 >> [pg_daily_schema_backup,t2] >> pg_daily_northwind_backup
+t1 >> t2
 
