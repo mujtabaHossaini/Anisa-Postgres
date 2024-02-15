@@ -141,6 +141,7 @@ some basic select usage
 17. **Date Formatting:**
    ```sql
    SELECT to_char(current_timestamp, 'YYYY-MM-DD HH24:MI:SS');
+   select extract (month from current_timestamp);
    ```
    Formats the current timestamp as a string.
 
@@ -170,44 +171,60 @@ Here are 10 more advanced examples of using the `SELECT` statement without the `
 1. **Date Manipulation:**
    
     ```sql
-    SELECT current_date + interval '1 week';
+    SELECT current_date + interval '1 week'; -- plus 7 days
+    select interval '2 days' * 3; -- 6 days
     ```
     Adds one week to the current date.
     
 12. **Substring Extraction:**
     ```sql
-    SELECT substring('Hello World' from 1 for 5);
+    SELECT substring('Hello World' from 1 for 5); -- Hello
     
-    ?: Valid?
-    SELECT substring('Hello World' from 1 for 50);
+    SELECT substring('Hello World' from 1 for 50); -- Hello World
     ```
     Extracts a substring of length 5 from the beginning of the string 'Hello World'.
     
 13. **Case Statement:**
     ```sql
+    
+    -- CASE returns only one value
+    -- It is possible to have mu
     SELECT 
     	  CASE 
     		WHEN 1 = 1 THEN 'True' 
     	    ELSE 'False' 
     	  END;
     
-    ?: Valid ?
-    SELECT 'ALI ' || CASE WHEN 1 = 1 THEN 'True' ELSE 'False' END as "Test";
+    SELECT 
+	  CASE 
+		WHEN 1 = 1 THEN 5
+	    ELSE 7
+	  end * interval '1 days' as "Days"; -- 5 days
+	  
+    SELECT 
+	  CASE 
+		WHEN 1 = 1 THEN 5
+		WHEN 1 = 1 THEN 5
+		WHEN 1 = 1 THEN 5
+		WHEN 1 = 1 THEN 5
+	    ELSE 7
+	  end * interval '1 days' as "Days"; -- 5 days 
+    
+    
+    SELECT 'ALI ' || CASE WHEN 1 = 1 THEN 'True' ELSE 'False' END as "Test"; -- ALI True
     
     ```
     Uses a `CASE` statement to conditionally return a value.
     
 14. **Array Operations:**
     ```sql
-    SELECT array[1, 2, 3] || array[4, 5, 6];
-    
-    ? : which one is valid ?
-    
-    SELECT 4 in array[4, 5, 6];
-    
-    SELECT 4 = ANY (array[4, 5, 6]);
-    
-    SELECT 4 != ALL (array[4, 5, 6]);
+	SELECT array[1, 2, 3] || array[4, 5, 6]; -- {1,2,3,4,5,6}
+
+	SELECT 4 in array[4, 5, 6]; -- error
+
+	SELECT 4 = ANY (array[4, 5, 6]); -- true
+
+	SELECT 4 != ALL (array[4, 5, 6]); -- false
     
     ```
     Concatenates two arrays, resulting in a new array.

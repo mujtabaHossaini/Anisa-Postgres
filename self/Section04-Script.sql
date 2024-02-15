@@ -46,4 +46,56 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 SELECT uuid_generate_v4(), uuid_generate_v1();
 
+SELECT to_char(current_timestamp, 'YYYY-MM-DD HH24:MI:SS');
+
+select extract (month from current_timestamp);
+
+select interval '2 days' * 3; -- 6 days
+
+SELECT current_date + interval '1 week'; -- plus 7 days
+
+SELECT substring('Hello World' from 1 for 5); -- Hello
+
+SELECT substring('Hello World' from 1 for 50); -- Hello World
+
+-- CASE returns only one value
+SELECT 
+	  CASE 
+		WHEN 1 = 1 THEN 'True' 
+	    ELSE 'False' 
+	  end as "Boolean Operation"; -- True
+
+	  
+	  
+	  
+SELECT 
+	  CASE 
+		WHEN 1 = 1 THEN 5
+		WHEN 1 = 1 THEN 5
+		WHEN 1 = 1 THEN 5
+		WHEN 1 = 1 THEN 5
+	    ELSE 7
+	  end * interval '1 days' as "Days"; -- 5 days
+
+SELECT 'ALI ' || CASE WHEN 1 = 1 THEN 'True' ELSE 'False' END as "Test"; -- ALI true
+
+
+
+SELECT array[1, 2, 3] || array[4, 5, 6]; -- {1,2,3,4,5,6}
+
+SELECT 4 in array[4, 5, 6]; -- error
+
+SELECT 4 = ANY (array[4, 5, 6]); -- true
+
+SELECT 4 != ALL (array[4, 5, 6]); -- false -> []
+
+
+
+
+
+
+
+
+
+
 
