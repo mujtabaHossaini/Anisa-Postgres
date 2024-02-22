@@ -2,14 +2,6 @@
 
 ## Query a table in one database from another
 
-![Eve Ben Ezra](https://miro.medium.com/v2/resize:fill:55:55/1*vGhGjktfdnWCSzYGITFCHg.jpeg)
-
-![Towards Data Science](https://miro.medium.com/v2/resize:fill:30:30/1*CJe3891yB1A1mzMdqemkdg.jpeg)
-
-
-
-![img](https://miro.medium.com/v2/resize:fit:875/1*tlF_4nbMbtkeb9K7-YTfyA.jpeg)
-
 
 
 **A foreign data wrapper is an extension available in PostgreSQL that allows you to access a table or schema in one database from another.** Foreign data wrappers can serve all sorts of purposes:
