@@ -17,6 +17,7 @@
   | [Mode SQL Tutorial](https://mode.com/sql-tutorial/)          |                                                              |
   | https://www.crunchydata.com/developers/tutorials             | An Interactive PostgreSQL Tutorial                           |
   | https://www.interdb.jp/pg/                                   | The Internals of PostgreSQL                                  |
+  | https://postgresqlco.nf/                                     | Postgres Config Parameters                                   |
 
 
 ### Cheatsheet
