@@ -1,0 +1,2 @@
+101,1,holding_stock,None,VFIAX,1708801317860512,None,None,2024-02-24-19-02-15,c
+101,1,holding_quantity,None,10,1708801317860512,None,None,2024-02-24-19-02-15,c
